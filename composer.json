@@ -1,0 +1,32 @@
+{
+    "name": "chondal/dvs-socialite",
+    "description": "Implementacion de login para proyectos DVS360 y otros.",
+    "authors": [
+        {
+            "name": "Jonathan",
+            "email": "jg.pradi@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Chondal\\DvsSocialite\\": "src/"
+        },
+        "files": [
+            "src/dvs-socialite.php"
+        ]
+    },
+    "require-dev": {
+        "orchestra/testbench": "^4.6"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Chondal\\DvsSocialite\\DvsSocialiteServiceProvider"
+            ],
+            "aliases": {
+                "DvsSocialite": "Chondal\\DvsSocialite\\Facades\\DvsSocialite"
+            }
+        }
+    }
+}

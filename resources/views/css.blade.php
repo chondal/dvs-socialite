@@ -1,0 +1,1 @@
+<link rel="stylesheet" href="{{ asset('vendor/dvs-socialite/css/dvs-socialite.css') }}">
