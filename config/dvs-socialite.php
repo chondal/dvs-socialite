@@ -11,6 +11,7 @@ return [
         'twitter',
         'google',
         'facebook',
+        'github',
     ],
 
 ];
