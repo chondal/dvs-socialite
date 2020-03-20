@@ -13,7 +13,7 @@ class DvsSocialiteServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'DvsSocialite');
 
         $this->publishes([
-            __DIR__ . '/../resources/views/' => resource_path('view/vendor/dvs-socialite'),
+            __DIR__ . '/../resources/views/' => resource_path('view/vendor/DvsSocialite'),
         ], 'dvs-socialite-views');
         $this->publishes([
             __DIR__ . '/../config/dvs-socialite.php' => base_path('config/dvs-socialite.php'),
