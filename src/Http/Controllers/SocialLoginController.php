@@ -22,22 +22,45 @@ class SocialLoginController extends Controller
         try {
             $response = Socialite::driver($socialNetwork)->user();
 
-            if ($response) {
+            if (isset($response)) {
                 $user = config('dvs-socialite.path_user_model')::where('email', $response->email)->first();
                 if ($user) {
-                    if (!$user->avatar) {
-                        $user->avatar = $response->avatar;
-                        $user->update();
+                    if (config('dvs-socialite.job_success_login')) {
+                        \dispatch(new \App\Jobs\SocialLoginJob($user, $response));
                     }
                     Auth::login($user);
                     return redirect(config('dvs-socialite.url_success'));
                 } else {
-                    return redirect(config('dvs-socialite.url_error'))->with('warning', 'No se encontro al usuario.');
+                    if (config('dvs-socialite.register')) {
+                        $user = config('dvs-socialite.path_user_model')::create($this->userInfoParse($socialNetwork, $response));
+                        if (config('dvs-socialite.job_success_register')) {
+                            \dispatch(new \App\Jobs\SocialRegisterJob($user, $response));
+                        }
+                        Auth::login($user);
+                        return redirect(config('dvs-socialite.url_success'));
+                    } else {
+                        return redirect(config('dvs-socialite.url_error'))->with('warning', 'No se encontro al usuario.');
+                    }
                 }
+            } else {
+                return redirect(config('dvs-socialite.url_error'))->with('warning', 'Algo salió mal.');
             }
 
         } catch (\Throwable $th) {
             return back()->with('warning', 'Hubo un error');
         }
+    }
+
+    private function userInfoParse($socialNetwork, $response)
+    {
+        if ($socialNetwork == 'google') {
+            $user = [
+                'name' => $response->user['given_name'],
+                'lastname' => $response->user['family_name'],
+                'email' => $response->user['email'],
+            ];
+        }
+
+        return $user;
     }
 }

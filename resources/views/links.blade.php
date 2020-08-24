@@ -1,3 +1,9 @@
+@if (Session::has('warning'))
+    <div class="alert alert-danger" role="alert">
+       <strong>{{ Session::get('warning') }}</strong>
+    </div>
+@endif
+
 @if (collect(config('dvs-socialite.socialsNetworks'))->contains('facebook'))
    <a href="{{ route('socialLogin.index', 'facebook') }}" class="btn btn-block btn-facebook">
       <i class="fa fa-facebook"></i> Ingresar con Facebook

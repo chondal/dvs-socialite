@@ -1,16 +1,16 @@
 .btn-facebook {
-    background-color: #3b5998;
-    color: white;
+    background-color: #3b5998 !important;
+    color: white !important;
 }
 .btn-google {
-    background-color: #ea4335;
-    color: white;
+    background-color: #ea4335 !important;
+    color: white !important;
 }
 .btn-twitter {
-    background-color: #1da1f2;
-    color: white;
+    background-color: #1da1f2 !important;
+    color: white !important;
 }
 .btn-github {
-    background-color: black;
-    color: white;
+    background-color: black !important;
+    color: white !important;
 }

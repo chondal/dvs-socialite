@@ -7,7 +7,9 @@
             "email": "jg.pradi@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "laravel/socialite": "^4.0"
+    },
     "autoload": {
         "psr-4": {
             "Chondal\\DvsSocialite\\": "src/"

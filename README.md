@@ -16,15 +16,27 @@ composer require chondal/dvs-socialite
 
 ## Como usarlo.
 
-debemos configurar todas las redes sociales que queramos con sus respectivas apis, luego poner las credenciales en el service.php, todo esto como explica la documentacion de laravel/socialite.
+debemos configurar todas las redes sociales que queramos con sus respectivas apis, luego poner las credenciales en el service.php, todo esto como explica la documentacion de laravel/socialite poniendo las credenciales en el archivo services.php.
 
-Luego tenemos que publicar los archivos de configuracion de dvs-socialite y ahi autorizar las redes sociales que vamos a utilizar.
+Publicar archivos del paquete con vendor:publish
+
+dvs-socialite-config (recomendado)
+dvs-socialite-views (opcional)
+dvs-socialite-assets (opcional)
+
 
 para cargar los links de logeo vamos a tener que poner en la vista donde queremos verlo, lo siguiente:
 ```php
 {{ DvsSocialite::loadLinks() }}
 ```
+para cargar los css de los botones, tenemos que poner en el header esto:
+```php
+{{ DvsSocialite::css() }}
+```
 
+
+## Información Extra
+En caso de querer ejecutar tareas extras al loguear o registrar, se pueden crear los jobs SocialLoginJob y SocialRegisterJob en su aplicación y habilitar el llamado de los mismos en la configuracion del paquete, por defecto vienen con estado "false"
 
 ## Contribuciones
 El paquete aun se encuentra en desarrollo.
