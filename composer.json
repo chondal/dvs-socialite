@@ -13,10 +13,7 @@
     "autoload": {
         "psr-4": {
             "Chondal\\DvsSocialite\\": "src/"
-        },
-        "files": [
-            "src/dvs-socialite.php"
-        ]
+        }
     },
     "require-dev": {
         "orchestra/testbench": "^4.6"
